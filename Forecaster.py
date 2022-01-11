@@ -29,13 +29,14 @@ import streamlit as st
 # N = S + E + I + R
 # R0 = Beta/Gamma
 
-
 # ds/dt = -B*s*i
 #ds = -B*s*i*dt
 # ds/s = -B*i*dt
 # -ds/s = B*i*dt
 # B = -ds/s*i*dt
 
+# create streamlit sidebar inputs
+st.sidebar.slider('R0', 1.0, 18.0, .5)
 # Will be inputs
 # beta =
 d0 = dt(2020, 1, 20)
@@ -111,25 +112,25 @@ fig.add_trace(
 #      go.Scatter(x=dates, y=Q_list,
 #                 name="Quarantined",line=dict(color='black')))
 
-fig.update_layout(
-    title={
-        'text': f'America with R0 = {R0} and CFR of {CFR*100}%',
-        'y': 0.9,
-        'x': 0.5,
-        'xanchor': 'center',
-        'yanchor': 'top'},
-    annotations=[
-        dict(
-            x=dates[days],
-            y=5,
-            xref="x",
-            yref="y",
-            text=f'We are here: day {dates[days]}',
-            showarrow=True,
-            arrowhead=1,
-            ax=0,
-            ay=-40)
-    ]
-)
+# fig.update_layout(
+#     title={
+#         'text': f'America with R0 = {R0} and CFR of {CFR*100}%',
+#         'y': 0.9,
+#         'x': 0.5,
+#         'xanchor': 'center',
+#         'yanchor': 'top'},
+#     annotations=[
+#         dict(
+#             x=dates[days],
+#             y=5,
+#             xref="x",
+#             yref="y",
+#             text=f'We are here: day {dates[days]}',
+#             showarrow=True,
+#             arrowhead=1,
+#             ax=0,
+#             ay=-40)
+#     ]
+# )
 
-plot(fig)
+st.pyplot(fig)
