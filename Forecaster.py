@@ -44,6 +44,9 @@ CFR = st.sidebar.slider('Case Fatality Rate in %', min_value=.1,
                         max_value=4.0, step=.1, value=.2)/100
 days_to_recovery = st.sidebar.slider(
     'Days to recovery', min_value=10, max_value=30, step=1, value=16)
+gamma = 1/days_to_recovery
+beta = R0*gamma
+N = st.sidebar.slider('Population in MM', min_value=100, max_value=7000, step=100, value=300)
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
@@ -56,10 +59,9 @@ sens = .9
 d1 = dt.today()
 delta = d1-d0
 days = delta.days
-N = 330000000
+# N = 330000000
 # days_to_recovery = 16
-gamma = 1/days_to_recovery
-beta = R0*gamma
+
 # I=infected
 #S= susceptable
 #R = recovered
@@ -101,21 +103,23 @@ for day in range(1, days_to_run):
     D_list.append(D)
     # Q_list.append(Q)
 
-dates = np.arange(1, days_to_run)
-ax, fig = plt.subplot()
+dates = np.arange(1, days_to_run+1)
+ax, fig = plt.subplots()
 # fig = go.Figure()
-fig.add_trace(
-    go.Scatter(x=dates, y=S_list,
-               name="Susceptible", line=dict(color='goldenrod')))
-fig.add_trace(
-    go.Scatter(x=dates, y=I_list,
-               name="Infected", line=dict(color='red')))
-fig.add_trace(
-    go.Scatter(x=dates, y=R_list,
-               name="Recovered", line=dict(color='green')))
-fig.add_trace(
-    go.Scatter(x=dates, y=D_list,
-               name="Dead", line=dict(color='violet')))
+print(len(dates), len(S_list))
+sns.lineplot(x=dates, y=S_list, label='Susceptible', color='goldenrod')
+# fig.add_trace(
+#     go.Scatter(x=dates, y=S_list,
+#                name="Susceptible", line=dict(color='goldenrod')))
+# fig.add_trace(
+#     go.Scatter(x=dates, y=I_list,
+#                name="Infected", line=dict(color='red')))
+# fig.add_trace(
+#     go.Scatter(x=dates, y=R_list,
+#                name="Recovered", line=dict(color='green')))
+# fig.add_trace(
+#     go.Scatter(x=dates, y=D_list,
+#                name="Dead", line=dict(color='violet')))
 # fig.add_trace(
 #      go.Scatter(x=dates, y=Q_list,
 #                 name="Quarantined",line=dict(color='black')))
