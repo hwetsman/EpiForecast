@@ -16,6 +16,8 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 import numpy as np
 from datetime import date as dt
+import matplotlib.pyplot as plt
+import seaborn as sns
 import streamlit as st
 
 # Beta = rate of mew exposure of susceptable
@@ -36,11 +38,11 @@ import streamlit as st
 # B = -ds/s*i*dt
 
 # create streamlit sidebar inputs
-st.sidebar.slider('R0', 1.0, 18.0, .5)
+R0 = st.sidebar.slider('R0', 1.0, 18.0, .5)
 # Will be inputs
 # beta =
-d0 = dt(2020, 1, 20)
-R0 = 2.0
+d0 = dt(2022, 1, 1)
+# R0 = 2.0
 days_to_run = 365
 CFR = 0.004
 test_perday = 1000
@@ -95,7 +97,8 @@ for day in range(1, days_to_run):
     # Q_list.append(Q)
 
 dates = np.arange(1, days_to_run)
-fig = go.Figure()
+ax, fig = plt.subplot()
+# fig = go.Figure()
 fig.add_trace(
     go.Scatter(x=dates, y=S_list,
                name="Susceptible", line=dict(color='goldenrod')))
