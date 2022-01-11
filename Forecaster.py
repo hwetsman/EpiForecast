@@ -39,11 +39,12 @@ import streamlit as st
 
 # create streamlit sidebar inputs
 R0 = st.sidebar.slider('R0', 1.0, 18.0, .5)
+days_to_run = st.sidebar.slider('Days to run', 100, 365, 5)
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
 # R0 = 2.0
-days_to_run = 365
+#days_to_run = 365
 CFR = 0.004
 test_perday = 1000
 sens = .9
