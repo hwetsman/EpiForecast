@@ -38,8 +38,8 @@ import streamlit as st
 # B = -ds/s*i*dt
 
 # create streamlit sidebar inputs
-R0 = st.sidebar.slider('R0', 1.0, 18.0, .5)
-days_to_run = st.sidebar.slider('Days to run', 100, 365, 5)
+R0 = st.sidebar.slider('R0', min_value=1.0, max_value=18.0, step=.5)
+days_to_run = st.sidebar.slider('Days to run', min_value=100, max_value=365, step=5)
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
