@@ -42,12 +42,14 @@ R0 = st.sidebar.slider('R0', min_value=1.0, max_value=18.0, step=.5, value=2.0)
 days_to_run = st.sidebar.slider('Days to run', min_value=100, max_value=365, step=5, value=200)
 CFR = st.sidebar.slider('Case Fatality Rate in %', min_value=.1,
                         max_value=4.0, step=.1, value=.2)/100
+days_to_recovery = st.sidebar.slider(
+    'Days to recovery', min_value=10, max_value=30, step=1, value=16)
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
 # R0 = 2.0
 #days_to_run = 365
-CFR = 0.004
+# CFR = 0.004
 test_perday = 1000
 sens = .9
 # End Inputs
@@ -55,7 +57,7 @@ d1 = dt.today()
 delta = d1-d0
 days = delta.days
 N = 330000000
-days_to_recovery = 16
+# days_to_recovery = 16
 gamma = 1/days_to_recovery
 beta = R0*gamma
 # I=infected
