@@ -38,10 +38,10 @@ import streamlit as st
 # B = -ds/s*i*dt
 
 # create streamlit sidebar inputs
-R0 = st.sidebar.slider('R0', min_value=1.0, max_value=18.0, step=.5, value=2)
+R0 = st.sidebar.slider('R0', min_value=1.0, max_value=18.0, step=.5, value=2.0)
 days_to_run = st.sidebar.slider('Days to run', min_value=100, max_value=365, step=5, value=200)
 CFR = st.sidebar.slider('Case Fatality Rate in %', min_value=.1,
-                        max_value=4.0, step=.1, value=.1)/100
+                        max_value=4.0, step=.1, value=.2)/100
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
