@@ -104,10 +104,10 @@ for day in range(1, days_to_run):
     # Q_list.append(Q)
 
 dates = np.arange(1, days_to_run+1)
-ax, fig = plt.subplots()
+fig, ax = plt.subplots(figsize=(15, 8))
 # fig = go.Figure()
 print(len(dates), len(S_list))
-sns.lineplot(x=dates, y=S_list, label='Susceptible', color='goldenrod')
+ax.scatter(dates, S_list, label='Susceptible')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=S_list,
 #                name="Susceptible", line=dict(color='goldenrod')))
