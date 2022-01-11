@@ -104,7 +104,7 @@ for day in range(1, days_to_run):
     # Q_list.append(Q)
 
 dates = np.arange(1, days_to_run+1)
-fig, ax = plt.subplots(figsize=(15, 8))
+fig, ax = plt.subplots()
 # fig = go.Figure()
 print(len(dates), len(S_list))
 ax.scatter(dates, S_list, label='Susceptible')
@@ -120,6 +120,7 @@ ax.scatter(dates, R_list, label='Recovered')
 #     go.Scatter(x=dates, y=R_list,
 #                name="Recovered", line=dict(color='green')))
 ax.scatter(dates, D_list, label='Dead')
+fig.legend(loc='center left')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=D_list,
 #                name="Dead", line=dict(color='violet')))
