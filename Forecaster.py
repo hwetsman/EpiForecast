@@ -4,11 +4,11 @@
 Created on Sat Mar 28 13:45:33 2020
 
 @author: howardwetsman
-I don't think I have it well done yet. I don't think i'm right in the 
-treatment of the tested population. What I'm trying to do is take the 
-population tested that day, multiply by the current infection rate and then 
+I don't think I have it well done yet. I don't think i'm right in the
+treatment of the tested population. What I'm trying to do is take the
+population tested that day, multiply by the current infection rate and then
 by the sensitivity of the test and then subtract those from the infected
-population. But it doesn't seem to make a difference whether it's 90 or 99% 
+population. But it doesn't seem to make a difference whether it's 90 or 99%
 sensitive.
 """
 
@@ -16,8 +16,9 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 import numpy as np
 from datetime import date as dt
+import streamlit as st
 
-# Beta = rate of mew exposure of susceptable 
+# Beta = rate of mew exposure of susceptable
 # Gamma = recovery rate
 # Sigma = infection rate of those exposed
 # Mu = background mortality rate unrelated to this illness
@@ -29,41 +30,41 @@ from datetime import date as dt
 # R0 = Beta/Gamma
 
 
-#ds/dt = -B*s*i
+# ds/dt = -B*s*i
 #ds = -B*s*i*dt
-#ds/s = -B*i*dt
+# ds/s = -B*i*dt
 # -ds/s = B*i*dt
 # B = -ds/s*i*dt
 
-########################## Will be inputs
-#beta = 
+# Will be inputs
+# beta =
 d0 = dt(2020, 1, 20)
 R0 = 2.0
 days_to_run = 365
 CFR = 0.004
 test_perday = 1000
 sens = .9
-############################# End Inputs
+# End Inputs
 d1 = dt.today()
 delta = d1-d0
 days = delta.days
-N=330000000
-days_to_recovery=16
+N = 330000000
+days_to_recovery = 16
 gamma = 1/days_to_recovery
 beta = R0*gamma
-#I=infected
+# I=infected
 #S= susceptable
 #R = recovered
-#N = total population
-S_list=[]  ####### initializing lists
-I_list=[]
-R_list=[]
+# N = total population
+S_list = []  # initializing lists
+I_list = []
+R_list = []
 D_list = []
 Q_list = []
 
-########### set day zero
+# set day zero
 I = 1
-R=0
+R = 0
 S = N-I-R
 D = 0
 Q = 0
@@ -73,11 +74,11 @@ R_list.append(R)
 D_list.append(D)
 Q_list.append(Q)
 
-for day in range(1,days_to_run):
+for day in range(1, days_to_run):
     baserate = I/S
     dQ = test_perday*baserate*sens
     dD = I*CFR*gamma
-    dS = -beta*I*S/N 
+    dS = -beta*I*S/N
     dR = gamma*I
     dI = beta*I*S/N - dR - dD
     # dI = beta*I*S/N - dR - dD - dQ
@@ -91,21 +92,21 @@ for day in range(1,days_to_run):
     R_list.append(R)
     D_list.append(D)
     # Q_list.append(Q)
-    
-dates = np.arange(1,days_to_run)
-fig = go.Figure()    
+
+dates = np.arange(1, days_to_run)
+fig = go.Figure()
 fig.add_trace(
-     go.Scatter(x=dates, y=S_list,
-                name="Susceptible",line=dict(color='goldenrod')))
+    go.Scatter(x=dates, y=S_list,
+               name="Susceptible", line=dict(color='goldenrod')))
 fig.add_trace(
-     go.Scatter(x=dates, y=I_list,
-                name="Infected", line=dict(color='red')))
+    go.Scatter(x=dates, y=I_list,
+               name="Infected", line=dict(color='red')))
 fig.add_trace(
-     go.Scatter(x=dates, y=R_list,
-                name="Recovered",line=dict(color='green'))) 
+    go.Scatter(x=dates, y=R_list,
+               name="Recovered", line=dict(color='green')))
 fig.add_trace(
-     go.Scatter(x=dates, y=D_list,
-                name="Dead",line=dict(color='violet')))
+    go.Scatter(x=dates, y=D_list,
+               name="Dead", line=dict(color='violet')))
 # fig.add_trace(
 #      go.Scatter(x=dates, y=Q_list,
 #                 name="Quarantined",line=dict(color='black')))
@@ -113,8 +114,8 @@ fig.add_trace(
 fig.update_layout(
     title={
         'text': f'America with R0 = {R0} and CFR of {CFR*100}%',
-        'y':0.9,
-        'x':0.5,
+        'y': 0.9,
+        'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
     annotations=[
@@ -123,12 +124,12 @@ fig.update_layout(
             y=5,
             xref="x",
             yref="y",
-            text= f'We are here: day {dates[days]}',
+            text=f'We are here: day {dates[days]}',
             showarrow=True,
             arrowhead=1,
             ax=0,
             ay=-40)
     ]
-    )  
+)
 
 plot(fig)
