@@ -111,15 +111,19 @@ ax.scatter(dates, S_list, label='Susceptible')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=S_list,
 #                name="Susceptible", line=dict(color='goldenrod')))
+ax.scatter(dates, I_list, label='Infected')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=I_list,
 #                name="Infected", line=dict(color='red')))
+ax.scatter(dates, R_list, label='Recovered')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=R_list,
 #                name="Recovered", line=dict(color='green')))
+ax.scatter(dates, D_list, label='Dead')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=D_list,
 #                name="Dead", line=dict(color='violet')))
+# ax.scatter(dates, Q_list, label='Quarantined')
 # fig.add_trace(
 #      go.Scatter(x=dates, y=Q_list,
 #                 name="Quarantined",line=dict(color='black')))
