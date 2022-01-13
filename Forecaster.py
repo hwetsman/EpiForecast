@@ -114,19 +114,20 @@ else:
 plt.xlabel('Number of Days of Epidemic')
 # fig = go.Figure()
 print(len(dates), len(S_list))
-ax.scatter(dates, S_list, label='Susceptible')
+size = 1
+ax.scatter(dates, S_list, label='Susceptible', s=size)
 # fig.add_trace(
 #     go.Scatter(x=dates, y=S_list,
 #                name="Susceptible", line=dict(color='goldenrod')))
-ax.scatter(dates, I_list, label='Infected')
+ax.scatter(dates, I_list, label='Infected', s=size)
 # fig.add_trace(
 #     go.Scatter(x=dates, y=I_list,
 #                name="Infected", line=dict(color='red')))
-ax.scatter(dates, R_list, label='Recovered')
+ax.scatter(dates, R_list, label='Recovered', s=size)
 # fig.add_trace(
 #     go.Scatter(x=dates, y=R_list,
 #                name="Recovered", line=dict(color='green')))
-ax.scatter(dates, D_list, label='Dead')
+ax.scatter(dates, D_list, label='Dead', s=size)
 fig.legend(loc='center right')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=D_list,
