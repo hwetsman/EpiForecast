@@ -44,10 +44,14 @@ CFR = st.sidebar.slider('Case Fatality Rate in %', min_value=.1,
                         max_value=4.0, step=.1, value=.2)/100
 days_to_recovery = st.sidebar.slider(
     'Days to recovery', min_value=10, max_value=30, step=1, value=16)
-graph_type = st.sidebar.radio('What type of graph do you want to see?', ['Absolute', 'Relative'])
+graph_type = st.sidebar.radio('What type of graph do you want to see?', [
+                              'Population', 'Percentage'])
 gamma = 1/days_to_recovery
 beta = R0*gamma
-N = st.sidebar.slider('Population in MM', min_value=100, max_value=7000, step=100, value=300)
+if graph_type == "Population":
+    N = st.sidebar.slider('Population in MM', min_value=100, max_value=7000, step=100, value=300)
+else:
+    N = 1000000
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
