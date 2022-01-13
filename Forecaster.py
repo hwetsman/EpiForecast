@@ -44,6 +44,7 @@ CFR = st.sidebar.slider('Case Fatality Rate in %', min_value=.1,
                         max_value=4.0, step=.1, value=.2)/100
 days_to_recovery = st.sidebar.slider(
     'Days to recovery', min_value=10, max_value=30, step=1, value=16)
+graph_type = st.sidebar.radio('What type of graph do you want to see?', ['Absolute', 'Relative'])
 gamma = 1/days_to_recovery
 beta = R0*gamma
 N = st.sidebar.slider('Population in MM', min_value=100, max_value=7000, step=100, value=300)
@@ -100,6 +101,7 @@ for day in range(1, days_to_run):
 
 dates = np.arange(1, days_to_run+1)
 fig, ax = plt.subplots()
+
 # fig = go.Figure()
 print(len(dates), len(S_list))
 ax.scatter(dates, S_list, label='Susceptible')
