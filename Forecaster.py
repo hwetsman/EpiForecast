@@ -127,7 +127,7 @@ ax.scatter(dates, R_list, label='Recovered')
 #     go.Scatter(x=dates, y=R_list,
 #                name="Recovered", line=dict(color='green')))
 ax.scatter(dates, D_list, label='Dead')
-fig.legend(loc='center left')
+fig.legend(loc='center right')
 # fig.add_trace(
 #     go.Scatter(x=dates, y=D_list,
 #                name="Dead", line=dict(color='violet')))
