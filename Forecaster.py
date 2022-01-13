@@ -107,8 +107,10 @@ dates = np.arange(1, days_to_run+1)
 fig, ax = plt.subplots()
 if graph_type == 'Population':
     plt.title('Number of Individuals in Affected Groups by Day of Epidemic')
+
 else:
     plt.title('% of Population in Affected Groups by Day of Epidemic')
+plt.xlabel('Number of Days of Epidemic')
 # fig = go.Figure()
 print(len(dates), len(S_list))
 ax.scatter(dates, S_list, label='Susceptible')
