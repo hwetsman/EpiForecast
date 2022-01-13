@@ -45,7 +45,7 @@ CFR = st.sidebar.slider('Case Fatality Rate in %', min_value=.1,
 days_to_recovery = st.sidebar.slider(
     'Days to recovery', min_value=10, max_value=30, step=1, value=16)
 graph_type = st.sidebar.radio('What type of graph do you want to see?', [
-                              'Population', 'Percentage'])
+                              'Population', 'Percentage'], index=0)
 gamma = 1/days_to_recovery
 beta = R0*gamma
 if graph_type == "Population":
