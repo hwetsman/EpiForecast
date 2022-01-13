@@ -51,7 +51,7 @@ beta = R0*gamma
 if graph_type == "Population":
     N = st.sidebar.slider('Population in MM', min_value=100, max_value=7000, step=100, value=300)
 else:
-    N = 1000000
+    N = 100
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
