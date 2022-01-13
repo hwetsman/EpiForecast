@@ -50,17 +50,12 @@ N = st.sidebar.slider('Population in MM', min_value=100, max_value=7000, step=10
 # Will be inputs
 # beta =
 d0 = dt(2022, 1, 1)
-# R0 = 2.0
-#days_to_run = 365
-# CFR = 0.004
 test_perday = 1000
 sens = .9
 # End Inputs
 d1 = dt.today()
 delta = d1-d0
 days = delta.days
-# N = 330000000
-# days_to_recovery = 16
 
 # I=infected
 #S= susceptable
