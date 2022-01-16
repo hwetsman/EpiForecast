@@ -120,33 +120,6 @@ ax.scatter(dates, I_list, label='Infected', s=size)
 ax.scatter(dates, R_list, label='Recovered', s=size)
 ax.scatter(dates, D_list, label='Dead', s=size)
 fig.legend(loc='center right')
-# fig.add_trace(
-#     go.Scatter(x=dates, y=D_list,
-#                name="Dead", line=dict(color='violet')))
-# ax.scatter(dates, Q_list, label='Quarantined')
-# fig.add_trace(
-#      go.Scatter(x=dates, y=Q_list,
-#                 name="Quarantined",line=dict(color='black')))
 
-# fig.update_layout(
-#     title={
-#         'text': f'America with R0 = {R0} and CFR of {CFR*100}%',
-#         'y': 0.9,
-#         'x': 0.5,
-#         'xanchor': 'center',
-#         'yanchor': 'top'},
-#     annotations=[
-#         dict(
-#             x=dates[days],
-#             y=5,
-#             xref="x",
-#             yref="y",
-#             text=f'We are here: day {dates[days]}',
-#             showarrow=True,
-#             arrowhead=1,
-#             ax=0,
-#             ay=-40)
-#     ]
-# )
 
 st.pyplot(fig)
